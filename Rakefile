@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ENV['SINATRA_ENV'] ||= 'development'
+ENV['APP_ENV'] ||= 'development'
 
 require_relative './config/environment'
 require 'sinatra/activerecord/rake'
@@ -9,7 +9,7 @@ desc 'Runs the rspec tests in the codebase'
 task :test do
   raise "Missing gem, run: 'rake install'" unless sh "gem list '^rspec$' -i"
 
-  ENV['SINATRA_ENV'] = 'test'
+  ENV['APP_ENV'] = 'test'
   sh 'rspec'
 end
 
@@ -29,7 +29,7 @@ desc 'Runs the app in an embeded server for development and testing purposes'
 task run: :lint do
   raise "Missing gem, run: 'rake install'" unless sh "gem list '^shotgun$' -i"
 
-  ENV['SINATRA_ENV'] = 'development'
+  ENV['APP_ENV'] = 'development'
   sh 'shotgun'
 end
 

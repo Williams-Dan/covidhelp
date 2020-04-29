@@ -32,9 +32,9 @@ Refere to the install documentation for your OS [MariaDB](https://mariadb.com/kb
 **NOTE:** these steps are to setup a database and user localy and do not follow security standards for setting up a live database
 
 * Connect to mariadb as root `mysql -u root -p`
-* Create a user for the app `create user covid-help-app@localhost identified by 'password1!';` 
-* Create a database `create database 'covidhelp';`
-* Grant your user priviages to the database `grant all privileges on 'covidhelp'.* to 'covid-help-app'@localhost;`
+* Create a user for the app `create user covid_help_app@localhost identified by 'password1!';` 
+* Create a database `create database covidhelp;`
+* Grant your user priviages to the database `grant all privileges on covidhelp.* to 'covid_help_app'@localhost;`
 
 
 ## Rake Tasks

@@ -1,26 +1,21 @@
 # frozen_string_literal: true
 
-ENV['SINATRA_ENV'] ||= 'development'
+ENV['APP_ENV'] ||= 'development'
 
 require 'bundler/setup'
-Bundler.require(:default, ENV['SINATRA_ENV'])
+Bundler.require(:default, ENV['APP_ENV'])
 
-ActiveRecord::Base.establish_connection(
-  adapter: 'sqlite3',
-  database: "spec/db/#{ENV['SINATRA_ENV']}.dat"
-)
-
-if ENV['SINATRA_ENV'] == 'development'
+if ENV['APP_ENV'] == 'development'
   ActiveRecord::Base.establish_connection(
     adapter: 'mysql2',
     encoding: 'utf8mb4',
     collation: 'utf8mb4_bin',
-    username: 'covid-help-app',
+    username: 'covid_help_app',
     password: 'password1!',
     host: '127.0.0.1',
     database: 'covidhelp'
   )
-elsif ENV['SINATRA_ENV'] == 'production'
+elsif ENV['APP_ENV'] == 'production'
   ActiveRecord::Base.establish_connection(
     adapter: 'mysql2',
     encoding: 'utf8mb4',
@@ -30,10 +25,10 @@ elsif ENV['SINATRA_ENV'] == 'production'
     host: ENV['DB_HOST'],
     database: ENV['DB_NAME']
   )
-elsif ENV['SINATRA_ENV'] == 'test'
+elsif ENV['APP_ENV'] == 'test'
   ActiveRecord::Base.establish_connection(
     adapter: 'sqlite3',
-    database: "spec/db/#{ENV['SINATRA_ENV']}.dat"
+    database: "spec/db/#{ENV['APP_ENV']}.dat"
   )
 else
   raise 'No enviroment set'
