@@ -39,21 +39,24 @@ task deploy: %i[install test lint] do
 end
 
 namespace 'gen' do
-	desc 'Generates a model and migration file with given name and props'
-	task :model, [:model_name, :props] do |t, args| 
-		raise "Missing gem, run: 'rake install'" unless sh "gem list '^corneal$' -i"
-		sh "corneal model #{args.model_name} #{args.props}";
-	end
+  desc 'Generates a model and migration file with given name and props'
+  task :model, [:model_name, :props] do |_t, args|
+    raise "Missing gem, run: 'rake install'" unless sh "gem list '^corneal$' -i"
 
-	desc 'Generates a controller file for the model with given name'
-	task :controller, [:model_name] do |t, args| 
-		raise "Missing gem, run: 'rake install'" unless sh "gem list '^corneal$' -i"
-		sh "corneal controller #{args.model_name}";
-	end
+    sh "corneal model #{args.model_name} #{args.props}"
+  end
 
-	desc 'Generates the entire MVC structure including migration file with given name and props'
-	task :scaffold, [:model_name, :props] do |t, args| 
-		raise "Missing gem, run: 'rake install'" unless sh "gem list '^corneal$' -i"
-		sh "corneal scaffold #{args.model_name} #{args.props}";
-	end
+  desc 'Generates a controller file for the model with given name'
+  task :controller, [:model_name] do |_t, args|
+    raise "Missing gem, run: 'rake install'" unless sh "gem list '^corneal$' -i"
+
+    sh "corneal controller #{args.model_name}"
+  end
+
+  desc 'Generates the entire MVC structure including migration file'
+  task :scaffold, [:model_name, :props] do |_t, args|
+    raise "Missing gem, run: 'rake install'" unless sh "gem list '^corneal$' -i"
+
+    sh "corneal scaffold #{args.model_name} #{args.props}"
+  end
 end
