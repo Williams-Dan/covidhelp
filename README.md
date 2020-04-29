@@ -10,16 +10,14 @@ What things you need to install and setup to get started:
 
 ### Ruby:
 
-```
-* git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-* echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-* echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-* git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-* echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-* git clone https://github.com/rbenv/rbenv-vars.git ~/.rbenv/plugins/rbenv-vars
-* rbenv install 2.7.0
-* rbenv global 2.7.0
-```
+* `git clone https://github.com/rbenv/rbenv.git ~/.rbenv`
+* `echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc`
+* `echo 'eval "$(rbenv init -)"' >> ~/.bashrc`
+* `git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build`
+* `echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc`
+* `git clone https://github.com/rbenv/rbenv-vars.git ~/.rbenv/plugins/rbenv-vars`
+* `rbenv install 2.7.0`
+* `rbenv global 2.7.0`
 
 ### MariaDb:
 
