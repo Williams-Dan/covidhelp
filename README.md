@@ -10,6 +10,10 @@ What things you need to install and setup to get started:
 
 ### Ruby:
 
+**Windows:** [RubyInstaller](https://rubyinstaller.org/2020/01/05/rubyinstaller-2.7.0-1-released.html)
+
+**Linux:** 
+
 * `git clone https://github.com/rbenv/rbenv.git ~/.rbenv`
 * `echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc`
 * `echo 'eval "$(rbenv init -)"' >> ~/.bashrc`
