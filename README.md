@@ -49,9 +49,6 @@ lint | Runs the linter over the code base and tries to fix what it can [Rubocop]
 run | Runs the app locally
 test | Runs the rspec tests
 deploy | TO BE IMPLEMENTED
-gen:controller | Generates the controller for given name. e.g: `rake gen:controller[user]`
-gen:model | Generates the model and migration for given name and fields. e.g: `rake "gen:model[user, name:string age:integer]"`
-gen:scaffold | Generates the entire MVC structure. e.g: `rake "gen:scaffold[user, name:string age:integer]"`
 
 To see all tasks you can just run `rake -T`
 

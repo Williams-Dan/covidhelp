@@ -27,5 +27,4 @@ group :development do
   gem 'mysql2', '>= 0.4.4'
   gem 'rubocop', require: false
   gem 'shotgun'
-  gem 'corneal', '~> 0.1.5', require: false
 end
