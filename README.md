@@ -1,6 +1,8 @@
 
 # COVID Help
 
+[![Build Status](https://travis-ci.org/Williams-Dan/covidhelp.svg?branch=master)](https://travis-ci.org/Williams-Dan/covidhelp)
+
 This project is for the traveltek covid-19 hackathone, the idea is to build a platform where people in need can post what they need and be matched up with volenteers who can help out.
 
 
