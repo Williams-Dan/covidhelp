@@ -1,0 +1,11 @@
+language: ruby
+
+rvm:
+  - 2.7.0
+
+before_install:
+  - gem install bundler
+
+script:
+  - rake install
+  - rake test
