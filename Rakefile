@@ -33,7 +33,12 @@ task run: :lint do
   sh 'shotgun'
 end
 
-desc 'TODO'
-task deploy: %i[install test lint] do
-  # todo
+desc 'HOST should be set and the ssh key should be setup on deploying machine'
+task :deploy do
+  unless sh "gem list '^capistrano$' -i"
+    raise "Missing gem, run: 'rake install'"
+  end
+  raise 'Run with HOST set to you servers IP address' unless ENV['HOST']
+
+  sh 'cap production deploy'
 end

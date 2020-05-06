@@ -23,7 +23,8 @@ elsif ENV['APP_ENV'] == 'production'
     username: ENV['DB_USERNAME'],
     password: ENV['DB_PASSWORD'],
     host: ENV['DB_HOST'],
-    database: ENV['DB_NAME']
+    database: ENV['DB_NAME'],
+    port: ENV['DB_PORT']
   )
 elsif ENV['APP_ENV'] == 'test'
   ActiveRecord::Base.establish_connection(
