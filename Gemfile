@@ -14,6 +14,7 @@ gem 'sinatra'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'thin'
 gem 'tux'
+gem 'mysql2', '>= 0.4.4'
 
 group :test do
   gem 'capybara'
@@ -28,7 +29,6 @@ group :development do
   gem 'capistrano-passenger', '~> 0.2.0'
   gem 'capistrano-rails', '~> 1.4', require: false
   gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
-  gem 'mysql2', '>= 0.4.4'
   gem 'rubocop', require: false
   gem 'shotgun'
 end

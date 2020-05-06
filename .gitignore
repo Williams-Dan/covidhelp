@@ -298,3 +298,5 @@ GitHub.sublime-settings
 # End of https://www.gitignore.io/api/ruby,rubymine,sublimetext,rubymine+all,rubymine+iml,visualstudiocode
 
 /spec/db
+
+/log
