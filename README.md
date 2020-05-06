@@ -50,7 +50,7 @@ install | Simple wrapper for `bundle install`
 lint | Runs the linter over the code base and tries to fix what it can [Rubocop](https://docs.rubocop.org/en/stable/)
 run | Runs the app locally
 test | Runs the rspec tests
-deploy | TO BE IMPLEMENTED
+deploy | Deploys to given host address, HOST should be set and the ssh key should be setup on deploying machine e.g `rake deploy HOST=<address>`
 
 To see all tasks you can just run `rake -T`
 
