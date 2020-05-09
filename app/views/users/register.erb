@@ -2,8 +2,34 @@
   <div class="column">
     <h2>Register Form</h2>
 
-    <div class="content">
-      <p>COMING SOON</p>
-    </div>
+    <%= erb :flash, :views => 'app/views/partials' %>
+
+    <form class="form" action="/register" method="post">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input name="name" class="input" type="text" placeholder="Full Name">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input name="email" class="input" type="text" placeholder="Email">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input name="password" class="input" type="password" placeholder="Password">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Confirm Password</label>
+        <div class="control">
+          <input name="passwordConfirm" class="input" type="password" placeholder="Password">
+        </div>
+      </div>
+      <button type="submit" class="button">Submit</button>
+    </form>
   </div>
 </div>
