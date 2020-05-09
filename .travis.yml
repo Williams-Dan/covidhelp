@@ -7,4 +7,5 @@ before_install:
   - gem install bundler
 
 script:
+  - rake db:migrate APP_ENV=test
   - rake test
