@@ -15,7 +15,6 @@ append :linked_dirs, 'log', 'tmp/pids', 'vendor/bundle', '.bundle'
 # Only keep the last 5 releases to save disk space
 set :keep_releases, 5
 
-
 namespace :db do
   task :migrate do
     on roles(:all) do
