@@ -7,6 +7,7 @@ ruby '2.7.0'
 gem 'activerecord', '~> 4.2', '>= 4.2.6', require: 'active_record'
 gem 'bcrypt'
 gem 'bigdecimal', '~> 1.4'
+gem 'mysql2', '>= 0.4.4'
 gem 'pry'
 gem 'rake'
 gem 'require_all'
@@ -14,7 +15,6 @@ gem 'sinatra'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'thin'
 gem 'tux'
-gem 'mysql2', '>= 0.4.4'
 
 group :test do
   gem 'capybara'
@@ -26,9 +26,9 @@ end
 
 group :development do
   gem 'capistrano', '~> 3.11'
+  gem 'capistrano-bundler', require: false
   gem 'capistrano-passenger', '~> 0.2.0'
   gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
-  gem 'capistrano-bundler', require: false
   gem 'rubocop', require: false
   gem 'shotgun'
 end
