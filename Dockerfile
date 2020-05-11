@@ -11,6 +11,6 @@ RUN gem install bundler && bundle install
 RUN mkdir /app
 WORKDIR /app
 RUN rake db:migrate
-RUN rake
+RUN rake run
 
 CMD ["/bin/bash"]
