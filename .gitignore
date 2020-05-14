@@ -301,3 +301,4 @@ GitHub.sublime-settings
 /spec/db
 
 /log
+.vagrant/
