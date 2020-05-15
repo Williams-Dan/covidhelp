@@ -46,7 +46,7 @@ describe UserController do
   it 'fails to register user with missing confirm password' do
     user = { name: 'Test User', email: 'email@chat.za.net', password: 'password' }
     post '/register', user
-    expect(last_response.body).to include('PasswordConfirm must be provided')
+    expect(last_response.body).to include('Passwordconfirm must be provided')
   end
 
   it 'fails to register user with where password and confirm do not match' do

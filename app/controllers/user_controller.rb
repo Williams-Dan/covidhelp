@@ -18,7 +18,7 @@ class UserController < ApplicationController
     @flashes = session.delete(:flashes) || []
 
     # Validate we have all required args
-    %w[name email password].each do |required|
+    %w[name email password passwordConfirm].each do |required|
       next if params[required]
 
       @flashes.push({
@@ -30,6 +30,11 @@ class UserController < ApplicationController
     # Check passwords match
     if params[:password] != params[:passwordConfirm]
       @flashes.push({ error: true, msg: 'Passwords do not match' })
+    end
+
+    # Check the email address is valid
+    if params[:email] !~ URI::MailTo::EMAIL_REGEXP
+      @flashes.push({ error: true, msg: 'Not a valid email address' })
     end
 
     # If we have any flash messages then we have an error
