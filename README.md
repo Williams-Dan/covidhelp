@@ -5,6 +5,14 @@
 
 This project is for the traveltek covid-19 hackathone, the idea is to build a platform where people in need can post what they need and be matched up with volenteers who can help out.
 
+## Setting up an enviroment with vagrant
+
+Step to setup an enviroment using vagrant, alternativley for manually setting up your own enviroment follow the steps int he prerequisites section.
+
+* Install [vagrant](https://www.vagrantup.com/docs/installation/) and [virtualbox](https://www.virtualbox.org/wiki/Downloads);
+* Download the Vagrantfile or clone the repo;
+* In the same directory as the Vagrantfile run `vagrant up`;
+
 
 ## Prerequisites
 
