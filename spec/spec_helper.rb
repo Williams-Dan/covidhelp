@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ENV['SINATRA_ENV'] = 'test'
+ENV['APP_ENV'] = 'test'
 
 require_relative '../config/environment'
 require 'rack/test'
@@ -8,7 +8,7 @@ require 'capybara/rspec'
 require 'capybara/dsl'
 
 if ActiveRecord::Migrator.needs_migration?
-  raise 'Run `rake db:migrate SINATRA_ENV=test`.'
+  raise 'Run `rake db:migrate APP_ENV=test`.'
 end
 
 ActiveRecord::Base.logger = nil

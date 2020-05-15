@@ -30,6 +30,7 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-passenger', '~> 0.2.0'
   gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+  gem 'readapt', '~> 1.0'
   gem 'rubocop', require: false
   gem 'shotgun'
 end
