@@ -1,0 +1,28 @@
+name: Build & Test
+
+on:
+  pull_request:
+    branches:
+    - develop
+    - master
+    - feature
+
+
+jobs:
+  BuildEnv:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+
+    - name: install gems
+      run: bundle install
+    
+    - name: DB Migrate
+      run: rake db:migrate APP_ENV=test
+
+    - name: Run App
+      run: rake run
+
+    - name: Test App
+      run: curl http://127.0.0.1:8000
+
