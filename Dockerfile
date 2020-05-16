@@ -6,6 +6,7 @@ WORKDIR /tmp
 COPY Gemfile /tmp
 COPY Gemfile.lock /tmp
 
+RUN apt-get update && apt-get install
 RUN gem install bundler && bundle install
 
 RUN mkdir /app
