@@ -16,6 +16,7 @@ gem 'sinatra'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'thin'
 gem 'tux'
+gem 'rubocop', require: false
 
 group :test do
   gem 'capybara'

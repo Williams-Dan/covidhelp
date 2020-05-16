@@ -13,6 +13,11 @@ task :test do
   sh 'rspec'
 end
 
+desc 'install missing ubuntu packages'
+task: :install do
+  sh 'apt-get install libmysqlclient-dev'
+end
+
 desc 'Simple a wrapper for bundle install'
 task :install do
   sh 'bundle install'
