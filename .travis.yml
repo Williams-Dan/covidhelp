@@ -10,8 +10,10 @@ addons:
     update: true
   
 after_success:
+### Once built - check if service is available (unsure of port right now)
   - curl http://127.0.0.1:8000
 
 script:
   - rake db:migrate APP_ENV=test
   - rake test
+  - rake run

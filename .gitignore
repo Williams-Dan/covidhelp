@@ -2,6 +2,11 @@
 # Created by https://www.gitignore.io/api/ruby,rubymine,sublimetext,rubymine+all,rubymine+iml,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=ruby,rubymine,sublimetext,rubymine+all,rubymine+iml,visualstudiocode
 
+### Security ###
+
+*.pem
+*.crt
+
 ### Ruby ###
 *.gem
 *.rbc
