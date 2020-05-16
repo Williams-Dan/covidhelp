@@ -46,6 +46,7 @@ class UserController < ApplicationController
       password: params[:password]
     )
 
+    # TODO: send confirm email
     session[:flashes] = [{ success: true, msg: 'Successfully Created!' }]
     redirect to('/')
   end

@@ -1,12 +1,20 @@
 # frozen_string_literal: true
 
+require 'bcrypt'
+
 # User model
 class User < ActiveRecord::Base
-  before_create :hash_password
+  include BCrypt
+  validates :name, presence: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :password_hash, presence: true
 
-  private
+  def password
+    @password ||= Password.new(password_hash)
+  end
 
-  def hash_password
-    puts("TODO: Hash password '#{password}'")
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.password_hash = @password
   end
 end
