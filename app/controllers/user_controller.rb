@@ -3,32 +3,23 @@
 require './config/environment'
 
 #:nodoc:
-class UserController < Sinatra::Base
-  set :session_secret, ENV['SESSION_SECRET']
-  enable :sessions
-
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views/users'
-    set :erb, layout_options: { views: 'app/views' }
-  end
-
+class UserController < ApplicationController
   get '/login' do
     @flashes = session.delete(:flashes) || []
-    erb :login
+    erb :'/users/login'
   end
 
   get '/register' do
     @flashes = session.delete(:flashes) || []
-    erb :register
+    erb :'/users/register'
   end
 
   post '/register' do
     @flashes = session.delete(:flashes) || []
 
     # Validate we have all required args
-    %w[name email password].each do |required|
-      next unless params[required].empty?
+    %w[name email password passwordConfirm].each do |required|
+      next if params[required]
 
       @flashes.push({
                       error: true,
@@ -41,8 +32,13 @@ class UserController < Sinatra::Base
       @flashes.push({ error: true, msg: 'Passwords do not match' })
     end
 
+    # Check the email address is valid
+    if params[:email] !~ URI::MailTo::EMAIL_REGEXP
+      @flashes.push({ error: true, msg: 'Not a valid email address' })
+    end
+
     # If we have any flash messages then we have an error
-    return erb :register unless @flashes.empty?
+    return erb :'/users/register' unless @flashes.empty?
 
     User.create!(
       name: params[:name],
@@ -50,6 +46,7 @@ class UserController < Sinatra::Base
       password: params[:password]
     )
 
+    # TODO: send confirm email
     session[:flashes] = [{ success: true, msg: 'Successfully Created!' }]
     redirect to('/')
   end
