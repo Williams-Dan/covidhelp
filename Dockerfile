@@ -7,7 +7,7 @@ COPY Gemfile /tmp
 COPY Gemfile.lock /tmp
 
 RUN apt-get update && apt-get install
-RUN gem install bundler && bundle install
+RUN gem install bundler && bundle install libmysqlclient-dev
 
 RUN mkdir /app
 WORKDIR /app
