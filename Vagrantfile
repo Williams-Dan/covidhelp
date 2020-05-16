@@ -49,6 +49,7 @@ Vagrant.configure("2") do |config|
      mysql -u root -ppassword -e "create database covidhelp;"
      mysql -u root -ppassword -e "grant all privileges on covidhelp.* to 'covid_help_app'@localhost;"
      mysql -u root -ppassword -e "flush privileges;"
+     sudo apt install -y libmariadb-dev
      sudo apt install ubuntu-gnome-desktop -y
      systemctl status gdm
      git clone https://github.com/rbenv/rbenv.git /home/vagrant/.rbenv
