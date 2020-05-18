@@ -46,6 +46,11 @@ Refere to the install documentation for your OS [MariaDB](https://mariadb.com/kb
 * Create a database `create database covidhelp;`
 * Grant your user priviages to the database `grant all privileges on covidhelp.* to 'covid_help_app'@localhost;`
 
+### Dotenv:  
+dotenv is used for keys and secrets.
+The following are required:
+- SESSION_SECRET (`echo "SESSION_SECRET=$(openssl rand -base64 32)" > .env`)
+
 
 ## Rake Tasks
 
