@@ -13,6 +13,7 @@ Layout/LineLength:
   # If you want the rule not to apply to a specific folder/file
   Exclude:
     - 'spec/*/**'
+    - 'Vagrantfile'
 
 Metrics/BlockLength:
   Exclude:
