@@ -43,7 +43,7 @@ Vagrant.configure('2') do |config|
      sudo apt update -y
      sudo apt install mariadb-server -y
      systemctl status mariadb
-     /usr/bin/mysqladmin -u root password 'password'
+     sudo /usr/bin/mysqladmin -u root password 'password'
      mysql -u root -ppassword -e "create user covid_help_app@localhost identified by 'password1!';"
      mysql -u root -ppassword -e "create database covidhelp;"
      mysql -u root -ppassword -e "grant all privileges on covidhelp.* to 'covid_help_app'@localhost;"
