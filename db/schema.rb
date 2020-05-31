@@ -18,7 +18,10 @@ ActiveRecord::Schema.define(version: 20200524202813) do
     t.text     "body",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "user_id",    limit: 4,     null: false
   end
+
+  add_index "posts", ["user_id"], name: "fk_rails_5b5ddfd518", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",          limit: 255
@@ -29,4 +32,5 @@ ActiveRecord::Schema.define(version: 20200524202813) do
     t.datetime "updated_at",                null: false
   end
 
+  add_foreign_key "posts", "users"
 end
