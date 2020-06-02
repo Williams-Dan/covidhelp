@@ -1,0 +1,25 @@
+<div class="columns">
+  <div class="column">
+    <h2>Create New Post</h2>
+
+    <%= erb :flash, :views => 'app/views/partials' %>
+
+    <form class="form" action="/posts/new" method="post">
+      <div class="field">
+        <label class="label">Title</label>
+        <div class="control">
+          <input name="title" class="input" type="text" placeholder="Post Title">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Body</label>
+        <div class="control">
+          <textarea name="body" class="input" type="textarea" rows="4" cols="50">
+          </textarea>
+        </div>
+      </div>
+      <input type="hidden" id="user_id" name="user_id" value="1"> <!--- TODO: change this once we get sessions working --->
+      <button type="submit" class="button">Submit</button>
+    </form>
+  </div>
+</div>
