@@ -7,4 +7,5 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use UserController
+use PostController
 run ApplicationController
