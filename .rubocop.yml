@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - 'db/schema.rb'
+    - 'vendor/**/*'
 
 Layout/LineLength:
   Enabled: true
@@ -39,3 +40,6 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Enabled: true
+
+Layout/FirstHashElementIndentation:
+  Enabled: false

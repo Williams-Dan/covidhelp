@@ -34,5 +34,4 @@ describe PostController do
     post '/posts/new', post
     expect(last_response.body).to include('User_id must be provided')
   end
-
 end
