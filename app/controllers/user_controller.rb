@@ -19,7 +19,7 @@ class UserController < ApplicationController
     user = User.find_by(email: params['email'])
 
     if !user || (user.password != params['password'])
-      @flashes.push({ error: true, msg: 'User details not found' })
+      @flashes.push({ error: true, msg: 'Email or password is incorrect' })
     end
 
     # If we have any flash messages then we have an error
@@ -52,7 +52,7 @@ class UserController < ApplicationController
     end
 
     # Check the email address is valid
-    if !params[:email].empty? && params[:email] !~ URI::MailTo::EMAIL_REGEXP
+    if !params[:email]&.empty? && params[:email] !~ URI::MailTo::EMAIL_REGEXP
       @flashes.push({ error: true, msg: 'Not a valid email address' })
     end
 

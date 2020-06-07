@@ -12,7 +12,7 @@ class PostController < ApplicationController
   post '/posts/new' do
     @flashes = session.delete(:flashes) || []
 
-    if !session[:user_id]
+    unless session[:user_id]
       session[:flashes] = [{ msg: 'You need to be logged in to make posts' }]
       redirect to('/login')
     end
