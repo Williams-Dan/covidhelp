@@ -6,7 +6,6 @@ Dotenv.load
 #:nodoc:
 class Email
   def self.send(from, to, subject, html, _text)
-    pp 'HIT EMAIL SENDER'
     from = SendGrid::Email.new(email: from)
     to = SendGrid::Email.new(email: to)
     content = SendGrid::Content.new(type: 'text/html', value: html)
