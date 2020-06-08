@@ -50,6 +50,7 @@ Refere to the install documentation for your OS [MariaDB](https://mariadb.com/kb
 dotenv is used for keys and secrets.
 The following are required:
 - SESSION_SECRET (`echo "SESSION_SECRET=$(openssl rand -base64 32)" > .env`)
+- SENDGRID_API_KEY
 
 
 ## Rake Tasks

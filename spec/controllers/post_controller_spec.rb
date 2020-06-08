@@ -3,6 +3,11 @@
 require 'spec_helper'
 
 describe PostController do
+  before :each do
+    @user = User.create!(name: 'Test User', email: 'email@chat.za.net', password: 'password', verified: true)
+    @non_verified_user = User.create!(name: 'Test User', email: 'email@chat.za.net', password: 'password', verified: false)
+  end
+
   it 'new posts page responds with a create post form with title and body fields' do
     get '/posts/new'
     expect(last_response.status).to eq(200)
@@ -12,27 +17,32 @@ describe PostController do
   end
 
   it 'successfully creates post' do
-    post = { title: 'Test Post', body: 'This is a test', user_id: 1 }
-    post '/posts/new', post
-    expect(last_response.status).to eq(302)
+    post = { title: 'Test Post', body: 'This is a test' }
+    post '/posts/new', post, 'rack.session' => { user_id: @user.id }
+    expect(last_response.headers['Location']).to eq('http://example.org/')
   end
 
   it 'fails to create post with missing title' do
-    post = { body: 'Test!', user_id: 1 }
-    post '/posts/new', post
+    post = { body: 'Test!' }
+    post '/posts/new', post, 'rack.session' => { user_id: @user.id }
     expect(last_response.body).to include('Title must be provided')
   end
 
   it 'fails to create post with missing body' do
     post = { title: 'Test Post', user_id: 1 }
-    post '/posts/new', post
+    post '/posts/new', post, 'rack.session' => { user_id: @user.id }
     expect(last_response.body).to include('Body must be provided')
   end
 
-  it 'fails to create post with missing user_id' do
+  it 'fails to create post when not logged in' do
     post = { title: 'Test Post', body: 'This is a test' }
     post '/posts/new', post
-    expect(last_response.body).to include('User_id must be provided')
+    expect(last_response.headers['Location']).to eq('http://example.org/login')
   end
 
+  it 'fails to create post when email is not verified' do
+    post = { title: 'Test Post', body: 'This is a test' }
+    post '/posts/new', post, 'rack.session' => { user_id: @non_verified_user.id }
+    expect(last_response.body).to include('You must verify your email address before posting')
+  end
 end

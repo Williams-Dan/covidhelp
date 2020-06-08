@@ -12,25 +12,29 @@ class PostController < ApplicationController
   post '/posts/new' do
     @flashes = session.delete(:flashes) || []
 
-    %w[title body user_id].each do |required|
-      next if params[required]
+    unless session[:user_id]
+      session[:flashes] = [{ msg: 'You need to be logged in to make posts' }]
+      redirect to('/login')
+    end
 
+    unless User.find(session[:user_id]).verified
       @flashes.push({
         error: true,
-        msg: "#{required.capitalize} must be provided"
+        msg: 'You must verify your email address before posting'
       })
     end
+
+    validate_args(%w[title body])
 
     return erb :'/posts/new' unless @flashes.empty?
 
     Post.create!(
       title: params[:title],
       body: params[:body],
-      user_id: params[:user_id]
+      user_id: session[:user_id]
     )
 
     session[:flashes] = [{ success: true, msg: 'Successfully Created!' }]
     redirect to('/')
-
   end
 end
