@@ -6,6 +6,8 @@ Dotenv.load
 #:nodoc:
 class Email
   def self.send(from, to, subject, html, _text)
+    return if ENV['APP_ENV'] == 'test'
+
     from = SendGrid::Email.new(email: from)
     to = SendGrid::Email.new(email: to)
     content = SendGrid::Content.new(type: 'text/html', value: html)
