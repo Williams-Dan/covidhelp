@@ -1,15 +1,8 @@
-<% if defined?(@flashes) && !@flashes.nil? && @flashes.kind_of?(Array) %>
-  <% @flashes.each do |flash| %>
-    <% if flash[:error] %>
-      <div id="flash" class="notification is-danger">
-    <% elsif flash[:success] %>
-      <div id="flash" class="notification is-success">
-    <% else %>
-      <div id="flash" class="notification is-info">
-    <% end %>
-
-      <button class="delete" onclick="event.target.parentElement.hidden = true"></button>
-      <%= flash[:msg] %>
+<% if defined?(@flashes) %>
+  <% @flashes.consume!.each do |flash| %>
+    <div id="flash" class="notification is-<%= flash[:class] %>">
+    <button class="delete" onclick="event.target.parentElement.hidden = true"></button>
+    <%= flash[:msg] %>
     </div>
   <% end %>
 <% end %>

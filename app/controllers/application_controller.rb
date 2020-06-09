@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require './config/environment'
+require './lib/flashes'
 
 require 'dotenv'
 Dotenv.load
@@ -15,8 +16,12 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
+  # Before each route load our Flash handler class
+  before do
+    @flashes = Flashes.new(session)
+  end
+
   get '/' do
-    @flashes = session.delete(:flashes) || []
     erb :welcome
   end
 
@@ -25,10 +30,7 @@ class ApplicationController < Sinatra::Base
     required.each do |arg|
       next unless !params[arg] || params[arg].empty?
 
-      @flashes.push({
-        error: true,
-        msg: "#{arg.capitalize} must be provided"
-      })
+      @flashes.push("#{arg.capitalize} must be provided", :error)
     end
   end
 end
