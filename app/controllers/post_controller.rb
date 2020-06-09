@@ -5,23 +5,17 @@ require './config/environment'
 #:nodoc:
 class PostController < ApplicationController
   get '/posts/new' do
-    @flashes = session.delete(:flashes) || []
     erb :'/posts/new'
   end
 
   post '/posts/new' do
-    @flashes = session.delete(:flashes) || []
-
     unless session[:user_id]
-      session[:flashes] = [{ msg: 'You need to be logged in to make posts' }]
+      @flashes.push('You must be logged in to make posts')
       redirect to('/login')
     end
 
     unless User.find(session[:user_id]).verified
-      @flashes.push({
-        error: true,
-        msg: 'You must verify your email address before posting'
-      })
+      @flashes.push('You must verify your email address before posting', :error)
     end
 
     validate_args(%w[title body])
@@ -34,7 +28,7 @@ class PostController < ApplicationController
       user_id: session[:user_id]
     )
 
-    session[:flashes] = [{ success: true, msg: 'Successfully Created!' }]
+    @flashes.push("Successfully created post '#{params[:title]}'!", :success)
     redirect to('/')
   end
 end
