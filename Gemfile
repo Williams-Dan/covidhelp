@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 
 ruby '2.7.0'
 
-gem 'activerecord', '~> 4.2', '>= 4.2.6', require: 'active_record'
+gem 'activerecord', '~> 6.1', require: 'active_record'
 gem 'bcrypt'
 gem 'bigdecimal', '~> 1.4'
 gem 'dotenv'
